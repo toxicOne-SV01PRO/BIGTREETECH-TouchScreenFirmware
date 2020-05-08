@@ -41,6 +41,7 @@
 #include "buzzer.h"
 
 #include "LCD_Encoder.h"
+#include "TouchEncoder.h"
 #include "ST7920_Simulator.h"
 #include "ui_draw.h"
 #include "touch_process.h"
