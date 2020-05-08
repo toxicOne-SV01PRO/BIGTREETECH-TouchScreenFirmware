@@ -639,11 +639,15 @@ void menuST7920(void)
   GUI_SetColor(infoSettings.marlin_mode_font_color);
   GUI_SetBkColor(infoSettings.marlin_mode_bg_color);
 
+  #ifndef ST7920_ONSCREEN_CONTROLS
   if(infoSettings.marlin_mode_showtitle == 1){
     STRINGS_STORE tempST;
     W25Qxx_ReadBuffer((uint8_t *)&tempST,STRINGS_STORE_ADDR,sizeof(STRINGS_STORE));
     GUI_DispStringInRect(0, 0, LCD_WIDTH, SIMULATOR_YSTART, (uint8_t *)tempST.marlin_title);
   }
+  #else
+    touchEncoderInit();
+  #endif
 
   SPI_Slave();
 
@@ -661,6 +665,11 @@ void menuST7920(void)
       if(LCD_BtnTouch(LCD_BUTTON_INTERVALS))
         sendEncoder(1);
       loopCheckEncoder();
+    #endif
+
+    #ifdef ST7920_ONSCREEN_CONTROLS
+      checkTouchButton();
+      loopBuzzer();
     #endif
 
     loopCheckMode();

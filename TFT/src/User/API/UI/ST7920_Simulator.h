@@ -3,6 +3,7 @@
 
 #include "stdint.h"
 #include "../../Configuration.h"
+#include "TouchEncoder.h"
 
 // User-defined colors for 12864 mode from Configuration.h
 #ifndef ST7920_BKCOLOR
@@ -30,7 +31,12 @@
 #define PIXEL_XSIZE      (MIN(LCD_WIDTH/LCD_XROWS, LCD_HEIGHT/LCD_YROWS))
 #define PIXEL_YSIZE      (PIXEL_XSIZE)
 #define SIMULATOR_XSTART ((LCD_WIDTH - PIXEL_XSIZE*LCD_XROWS) / 2)
+
+#ifdef ST7920_ONSCREEN_CONTROLS
 #define SIMULATOR_YSTART ((LCD_HEIGHT - PIXEL_YSIZE*LCD_YROWS) / 2)
+#else
+#define SIMULATOR_YSTART  (START_X / 2)
+#endif
 
 typedef void (*FP_CMD)(uint8_t);
 
