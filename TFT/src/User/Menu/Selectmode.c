@@ -66,16 +66,16 @@ void selectmode(int8_t  nowMode)
 
   if(nowMode==SERIAL_TSC)
   {
-		GUI_SetColor(lcd_colors[infoSettings.bg_color]);
+		GUI_SetColor(infoSettings.bg_color);
 		GUI_DrawRect(rect_of_mode[0].x0 - border_off, rect_of_mode[0].y0 - border_off,rect_of_mode[0].x1 + border_off, rect_of_mode[0].y1 + border_off);
-		GUI_SetColor(lcd_colors[LCD_YELLOW]);
+		GUI_SetColor(LCD_YELLOW);
 		GUI_DrawRect(rect_of_mode[1].x0 - border_off, rect_of_mode[1].y0 - border_off,rect_of_mode[1].x1 + border_off, rect_of_mode[1].y1 + border_off);
   }
   else
   {
-		GUI_SetColor(lcd_colors[infoSettings.bg_color]);
+		GUI_SetColor(infoSettings.bg_color);
 		GUI_DrawRect(rect_of_mode[1].x0 - border_off, rect_of_mode[1].y0 - border_off,rect_of_mode[1].x1 + border_off, rect_of_mode[1].y1 + border_off);
-		GUI_SetColor(lcd_colors[LCD_YELLOW]);
+		GUI_SetColor(LCD_YELLOW);
 		GUI_DrawRect(rect_of_mode[0].x0 - border_off, rect_of_mode[0].y0 - border_off,rect_of_mode[0].x1 + border_off, rect_of_mode[0].y1 + border_off);
 
   }
@@ -119,7 +119,7 @@ void menuMode(void)
   int16_t /*nowEncoder =*/ encoderPosition = 0;
   int8_t  nowMode = modeRadio.select = infoSettings.mode;
 
-  GUI_Clear(lcd_colors[infoSettings.bg_color]);
+  GUI_Clear(infoSettings.bg_color);
   //RADIO_Create(&modeRadio);
   if (infoSettings.serial_alwaysOn != 1)
   {
