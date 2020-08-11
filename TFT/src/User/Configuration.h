@@ -1,6 +1,6 @@
 #ifndef _CONFIGRATION_H_
 #define _CONFIGRATION_H_
-#define CONFIG_VERSION 20200724
+#define CONFIG_VERSION 20200810
 //===========================================================================
 //============================= General Settings ============================
 //===========================================================================
@@ -44,8 +44,8 @@
  *              6: LCD_DIM_300_SECONDS,  7: LCD_DIM_CUSTOM_SECONDS
  *
  */
-#define DEFAULT_LCD_BRIGHTNESS      10  // 10: LCD_100_PERCENT - Brightness value from list
-#define DEFAULT_LCD_IDLE_BRIGHTNESS 2   // 2: LCD_10_PERCENT - Brightness value from list
+#define DEFAULT_LCD_BRIGHTNESS      11  // 11: LCD_100_PERCENT - Brightness value from list
+#define DEFAULT_LCD_IDLE_BRIGHTNESS 3   // 3: LCD_10_PERCENT - Brightness value from list
 #define DEFAULT_LCD_IDLE_TIMER      0   // 0: LCD_DIM_OFF
 #define LCD_DIM_CUSTOM_SECONDS      600 // Custom value in seconds. Will be used if LCD_DIM_CUSTOM_SECONDS is set as idle timer.
 
@@ -99,7 +99,6 @@
 
 /**
  * This setting determines the communication speed of the printer.
- *
  * 250000 works in most cases, but you might try a lower speed if
  * you commonly experience drop-outs during host printing.
  * You may try up to 1000000 to speed up SD file transfer.
@@ -110,9 +109,7 @@
 
 /**
  * Default Touch Mode Language
- *
  * Select the language to display on the LCD while in Touch Mode.
- *
  * Options: ARMENIAN, CHINESE, CZECH, DUTCH, ENGLISH, FRENCH, GERMAN, HUNGARIAN, ITALIAN, JAPANESE, POLISH, PORTUGUESE, RUSSIAN, SLOVAK, SPAIN, CATALAN
  */
 #define DEFAULT_LANGUAGE ENGLISH
@@ -133,6 +130,27 @@
 #define BUZZER_FREQUENCY_DURATION_MS 20 // Default 20
 #define BUZZER_FREQUENCY_HZ 10000       // Default 10000, 20Hz to 60KHz
 #define BUZZER_STOP_LEVEL false
+
+/**
+ * Toast notification duration (in ms)
+ *  set the duration for displaying toast notification on top of the screen
+ */
+#define TOAST_DURATION 3000
+
+/**
+ * Notification style for ACK messages
+ * Set the notification style to use for displaying the ACK messages which start with 'echo:'
+ *
+ * NOTE: The OFF value is applied to any ACK message type (e.g. even to known echo ACK).
+ *      It means that any kind of ACK message is silently discard
+ *
+ * Options: [OFF: 0, POPUP: 1, TOAST: 2]
+ *  OFF:   No notification. The message is ignored.
+ *  POPUP: Display a popup window for user confirmation.
+ *  TOAST: A Toast notification is displayed for few seconds. No user interaction is needed
+ *
+ */
+#define ACK_NOTIFICATION_STYLE 1
 
 /**
  * Default Touch Mode Color Options
@@ -218,7 +236,7 @@
 #define AUTO_SAVE_LOAD_LEVELING_VALUE true //to enabled: true | to disabled: false
 
 /**
- * Enable Unified Bed Leveling options.
+ * Enable Unified Bed Leveling options
  *  Will attempt to auto detect and enable specific UBL options.
  *
  * WARNING - If you're not sure, leave on auto-detect or disabled.
@@ -239,6 +257,17 @@
 #define FRIENDLY_PROBE_OFFSET_LANGUAGE 1
 
 /**
+ * Enable quick EEPROM save/load/reset button
+ *
+ * This will enable a handy button in the (settings > machine) menu
+ *
+ * Note: if disabled, EEPROM operations can also be accessed in the (settings > machine > parameters) menu
+ *
+ * Options:  0: Disabled    1: Enabled
+ */
+#define QUICK_EEPROM_BUTTON 0
+
+/**
  * Manual Leveling
  * Move to four corner points to Leveling manually (Point 1, Point 2, Point 3, Point 4)
  */
@@ -256,7 +285,7 @@
 /**
  * Popup
  */
-#define POPUP_NOTIFICATION_DURATION 1500;                  // expressed in ms. E.g. 1500 corresponds to 1.5 seconds
+#define POPUP_NOTIFICATION_DURATION 3000;                  // expressed in ms. E.g. 1500 corresponds to 1.5 seconds
 
 /**
  * Z Fade
